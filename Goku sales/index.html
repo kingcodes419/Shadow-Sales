@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GOKU SALES — Shadow Market</title>
+<meta name="description" content="Goku Sales — FF accounts, swaps, panels, VPS, virtual numbers, premium apps & legal consultations." />
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --bg:#04030a;
+  --neonA:#7b61ff;
+  --neonB:#00e6a8;
+  --gold:#ffd36b;
+  --muted:#9ea6ac;
+  --card:#0d0f13;
+  --glass: rgba(255,255,255,0.03);
+  --radius:14px;
+  --maxw:1300px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:
+radial-gradient(900px 320px at 8% 8%, rgba(123,107,255,0.06), transparent),
+radial-gradient(700px 240px at 92% 92%, rgba(0,230,168,0.02), transparent),
+var(--bg);color:#eaf2ff;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:18px auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:76px;height:76px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,var(--neonA),var(--neonB));font-weight:900;color:#041018;font-size:22px;box-shadow:0 18px 60px rgba(123,107,255,0.08)}
+h1{margin:0;font-size:22px}
+.subtitle{color:var(--muted);font-size:13px}
+nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+nav a.cta{background:linear-gradient(90deg,var(--neonB),var(--neonA));color:#041018;font-weight:800;padding:8px 12px}
+.layout{display:grid;grid-template-columns:1fr 420px;gap:18px;margin-top:18px;align-items:start}
+.stage{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:var(--radius);box-shadow:0 20px 80px rgba(0,0,0,0.7);position:relative;min-height:520px;overflow:hidden;perspective:1200px;}
+.orb-container{width:100%;height:100%;position:relative;transform-style:preserve-3d;}
+.node{position:absolute;top:50%;left:50%;width:80px;height:40px;background:rgba(123,107,255,0.15);border:1px solid rgba(255,255,255,0.05);border-radius:10px;color:#fff;font-weight:700;text-align:center;line-height:40px;cursor:pointer;transform-style:preserve-3d;transition:0.25s;}
+.node:hover{background:linear-gradient(90deg,var(--neonB),var(--neonA));color:#041018;transform:scale(1.2);}
+.orb-caption{position:absolute;left:28px;bottom:18px;color:var(--muted);font-size:13px}
+.glossy-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:0;font-weight:900;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--neonA),var(--neonB));color:#041018;box-shadow:0 12px 40px rgba(123,107,255,0.06)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+.service-tile{padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);cursor:pointer;transition:transform .18s,box-shadow .18s}
+.service-tile:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(123,107,255,0.05)}
+.small{color:var(--muted);font-size:13px}
+.contact-card{padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent);display:flex;flex-direction:column;gap:8px}
+.contact-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.disclaimer{margin-top:12px;color:#ffd6d6;padding:10px;border-radius:10px;background:rgba(255,0,60,0.03);font-weight:700}
+footer{margin-top:18px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,0.72);display:none;align-items:center;justify-content:center;z-index:9999;padding:18px}
+.modal{width:min(1040px,98%);max-height:86vh;overflow:auto;border-radius:12px;background:linear-gradient(180deg,#0f1114,#0b0b0e);padding:18px;box-shadow:0 30px 120px rgba(0,0,0,0.8);position:relative}
+.close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);font-size:18px;cursor:pointer}
+.modal .grid{display:grid;grid-template-columns:1fr 320px;gap:14px}
+.modal h3{margin:0 0 8px 0}
+.modal .side{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+.note-red{background:rgba(255,0,60,0.05);color:#ffb3b3;padding:8px;border-radius:8px;font-weight:700;margin-top:6px}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .stage{min-height:380px}
+  .modal .grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .stage{min-height:320px}
+  .node{width:64px;height:32px;font-size:12px}
+  .logo{width:56px;height:56px;font-size:18px}
+  .panel, .modal{box-shadow:none}
+  h1{font-size:18px}
+}
+.toast{position:fixed;right:18px;bottom:18px;background:rgba(0,0,0,0.8);padding:10px 14px;border-radius:8px;color:#fff;z-index:10000}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">
+    <div class="logo">G●S</div>
+    <div>
+      <h1>GOKU SALES</h1>
+      <div class="subtitle">Free Fire accounts · Panels · VPS · Virtual Numbers · Premium Apps · Legal Consults</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="creator.html" class="cta">Creator (King)</a>
+  </nav>
+</header>
+
+<div class="layout">
+  <section class="stage">
+    <div class="orb-container" id="orb"></div>
+    <div class="orb-caption">Drag to rotate • Click any node to view full service details</div>
+  </section>
+
+  <aside>
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0">Quick Services</h2>
+          <div class="small">Click a node on the orb or use the tiles below. Sensitive items shown as legal consults only.</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="glossy-btn btn-outline" id="allServicesBtn">All</button>
+          <a class="glossy-btn btn-primary" href="creator.html">Hire King</a>
+        </div>
+      </div>
+
+      <div class="services" id="services"></div>
+    </div>
+
+    <div style="height:14px"></div>
+
+    <div class="panel contact-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:900">Goku — Owner</div>
+          <div class="small">Primary contact for Shadow Sales</div>
+        </div>
+        <div style="background:linear-gradient(90deg,var(--neonB),var(--neonA));padding:8px;border-radius:8px;font-weight:900;color:#041018">GOKU SALES</div>
+      </div>
+
+      <div class="contact-row">
+        <div><div class="small">WhatsApp Group</div><div style="font-weight:900">Join GC</div></div>
+        <a class="glossy-btn btn-outline" href="https://chat.whatsapp.com/Bie9wUf0svE3p5sJ4D316p?mode=ems_copy_t" target="_blank">Open</a>
+      </div>
+
+      <div class="contact-row">
+        <div><div class="small">Primary</div><div style="font-weight:900">+2347066584453</div></div>
+        <button class="glossy-btn btn-primary" onclick="openWhatsApp('+2347066584453')">Chat Goku Now ⚡</button>
+      </div>
+
+      <div class="disclaimer">Some items are sensitive. Respect our rules and ask before requesting.</div>
+    </div>
+  </aside>
+</div>
+<footer>
+  <div>© 2025 Shadow Market</div>
+  <div>Created by King</div>
+</footer>
+</div>
+
+<div class="mask" id="modalMask">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">✖</button>
+    <div class="grid">
+      <div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+      <div class="side">
+        <div id="modalSide"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const servicesData=[
+{name:"FF Accounts",desc:"Buy and sell Free Fire accounts safely.","side":"Legal consult for sensitive high-tier accounts."},
+{name:"Account Swaps",desc:"Swap accounts between users.","side":"Ensure both sides agree, sensitive items handled legally."},
+{name:"UID Topup / Airdrops",desc:"Boost your FF account with top-ups and airdrops.","side":"Handle carefully to avoid violations."},
+{name:"Sensitivity Tools",desc:"Advanced account sensitivity setups.","side":"High caution advised."},
+{name:"Android Head Tracker",desc:"Track devices & enhance account security.","side":"Use responsibly."},
+{name:"Panel Access",desc:"Control panels for accounts & services.","side":"Admin only."},
+{name:"Hologram & Proxy",desc:"Protect your identity online.","side":"Legal limits apply."},
+{name:"Hacks",desc:"Get hacks for any andriod and iphone for destruction and exploition","side":"Including:whatsapp and telegram ban/Unban Malwares and Ransomwares etc."},
+{name:"Tiktok Boost",desc:"Increase video likes,views and shares on tiktok accounts.","side":"Follow platform guidelines."},
+{name:"WhatsApp Bots",desc:"Automate WhatsApp responses and assiatance powered by an ai to match your taste.","side":"Only ethical use."},
+{name:"Virtual Numbers",desc:"Get virtual numbers from any country so open any social account.","side":"For legal purposes only"}
+];
+
+const orb = document.getElementById('orb');
+const servicesDiv = document.getElementById('services');
+let rotationX=0, rotationY=0;
+let lastX,lastY,dragging=false;
+
+// create orb nodes
+function createOrbNodes(){
+  const radius=180;
+  const N = servicesData.length;
+  for(let i=0;i<N;i++){
+    const svc = servicesData[i];
+    const node = document.createElement('div');
+    node.className="node";
+    node.innerText=svc.name;
+
+    // Fibonacci Sphere
+    const phi = Math.acos(1 - 2*(i+0.5)/N); 
+    const theta = Math.PI * (1 + Math.sqrt(5)) * i; 
+
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.sin(phi) * Math.sin(theta);
+    const z = radius * Math.cos(phi);
+
+    node.style.transform = `translate3d(${x}px,${y}px,${z}px)`;
+    node.dataset.x = x; node.dataset.y = y; node.dataset.z = z;
+
+    node.addEventListener('click',()=>openModal(svc));
+    orb.appendChild(node);
+
+    // sidebar tiles
+    const tile = document.createElement('div');
+    tile.className="service-tile";
+    tile.innerText=svc.name;
+    tile.addEventListener('click',()=>openModal(svc));
+    servicesDiv.appendChild(tile);
+  }
+}
+
+// rotation logic
+function rotateOrb(){
+  const nodes = orb.querySelectorAll('.node');
+  nodes.forEach(node=>{
+    const x=parseFloat(node.dataset.x);
+    const y=parseFloat(node.dataset.y);
+    const z=parseFloat(node.dataset.z);
+
+    const cosX=Math.cos(rotationX), sinX=Math.sin(rotationX);
+    const cosY=Math.cos(rotationY), sinY=Math.sin(rotationY);
+
+    let newY = y*cosX - z*sinX;
+    let newZ = y*sinX + z*cosX;
+    let newX = x*cosY + newZ*sinY;
+    newZ = -x*sinY + newZ*cosY;
+
+    const scale = 0.5 + (newZ+180)/360;
+    node.style.transform = `translate3d(${newX}px,${newY}px,0px) scale(${scale})`;
+    node.style.zIndex = Math.floor(scale*1000);
+    node.style.opacity = scale;
+  });
+  requestAnimationFrame(rotateOrb);
+}
+
+orb.addEventListener('mousedown', e=>{
+  dragging=true;
+  lastX=e.clientX; lastY=e.clientY;
+});
+document.addEventListener('mouseup',()=>dragging=false);
+document.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  const deltaX=(e.clientX-lastX)*0.005;
+  const deltaY=(e.clientY-lastY)*0.005;
+  rotationY += deltaX; rotationX += deltaY;
+  lastX=e.clientX; lastY=e.clientY;
+});
+
+// ✅ Touch support for mobile
+orb.addEventListener('touchstart', e=>{
+  dragging=true;
+  const t=e.touches[0];
+  lastX=t.clientX; lastY=t.clientY;
+});
+document.addEventListener('touchend',()=>dragging=false);
+document.addEventListener('touchmove', e=>{
+  if(!dragging) return;
+  const t=e.touches[0];
+  const deltaX=(t.clientX-lastX)*0.005;
+  const deltaY=(t.clientY-lastY)*0.005;
+  rotationY += deltaX; rotationX += deltaY;
+  lastX=t.clientX; lastY=t.clientY;
+});
+
+// auto-rotation
+setInterval(()=>{if(!dragging) rotationY +=0.001},16);
+
+// modal
+function openModal(svc){
+  document.getElementById('modalMask').style.display='flex';
+  document.getElementById('modalTitle').innerText=svc.name;
+  document.getElementById('modalDesc').innerText=svc.desc;
+  document.getElementById('modalSide').innerText=svc.side;
+}
+function closeModal(){
+  document.getElementById('modalMask').style.display='none';
+}
+
+function openWhatsApp(number){
+  window.open(`https://wa.me/${number.replace(/\D/g,'')}`,'_blank');
+}
+
+createOrbNodes();
+rotateOrb();
+</script>
+</body>
+</html>
