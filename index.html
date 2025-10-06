@@ -18,6 +18,32 @@
   --radius:14px;
   --maxw:1300px;
 }
+/* Float + Fade-in Animation */
+/* Smooth, slower float + fade-in animation */
+@keyframes smoothFloatFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(6px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateY(20px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-float {
+  opacity: 0;
+  animation: smoothFloatFade 1.8s ease-out forwards;
+}
+
+
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:
 radial-gradient(900px 320px at 8% 8%, rgba(123,107,255,0.06), transparent),
@@ -246,6 +272,16 @@ document.addEventListener('mousemove', e=>{
   rotationY += deltaX; rotationX += deltaY;
   lastX=e.clientX; lastY=e.clientY;
 });
+// Smooth slow float-fade animation on load
+// Smooth slow float-fade animation on load (single run)
+window.addEventListener("load", () => {
+  const targets = document.querySelectorAll("header, .layout, footer"); // removed .wrap
+  targets.forEach((el, i) => {
+    el.classList.add("fade-float");
+    el.style.animationDelay = `${i * 0.4}s`; // stagger effect
+  });
+});
+
 
 // ✅ Touch support for mobile
 orb.addEventListener('touchstart', e=>{
