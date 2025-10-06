@@ -8,23 +8,53 @@
 <style>
   :root{--bg:#070207;--gold1:#ffd36b;--gold2:#ff9f45;--muted:#bfb8a6}
   *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg, rgba(0,0,0,0.6), var(--bg));color:#fff}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg, rgba(0,0,0,0.6), var(--bg));color:#fff;overflow-x:hidden}
   .wrap{max-width:980px;margin:28px auto;padding:22px}
+
+  /* === SMOOTH BOUNCE ANIMATION === */
+  @keyframes bounceUp {
+    0% {
+      opacity: 0;
+      transform: translateY(60px) scale(0.98);
+      filter: blur(6px);
+    }
+    40% {
+      opacity: 0.6;
+      transform: translateY(-10px) scale(1.03);
+      filter: blur(2px);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(4px) scale(1.01);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+  .bounce-fade {
+    opacity: 0;
+    animation: bounceUp 1.4s cubic-bezier(.19,1,.22,1) forwards;
+  }
+
   header{display:flex;justify-content:space-between;align-items:center}
   .logo{font-weight:900;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#081018}
   .hero{display:flex;gap:20px;align-items:center;margin-top:18px}
   .avatar{width:160px;height:160px;border-radius:16px;background:linear-gradient(135deg,#7b61ff,#00e6a8);display:flex;align-items:center;justify-content:center;font-weight:900;color:#041018;font-size:28px;box-shadow:0 18px 60px rgba(255,160,80,0.08)}
   .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px}
-  .gold-cta{background:linear-gradient(90deg,var(--gold1),var(--gold2));padding:12px 14px;border-radius:12px;color:#081018;font-weight:900;border:0;cursor:pointer}
+  .gold-cta{background:linear-gradient(90deg,var(--gold1),var(--gold2));padding:12px 14px;border-radius:12px;color:#081018;font-weight:900;border:0;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
+  .gold-cta:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 40px rgba(255,200,90,0.2)}
   .small{color:var(--muted)}
   .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-  .feat{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02)}
+  .feat{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);transition:transform .25s ease,box-shadow .25s ease}
+  .feat:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 14px 40px rgba(255,160,80,0.08)}
   footer{margin-top:18px;color:var(--muted)}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
+    <header class="bounce-fade">
       <div style="display:flex;gap:12px;align-items:center">
         <div class="logo">K I N G</div>
         <div>
@@ -37,7 +67,7 @@
       </div>
     </header>
 
-    <div class="hero" style="position:relative;z-index:2">
+    <div class="hero bounce-fade" style="animation-delay:0.25s;position:relative;z-index:2">
       <img class="avatar" src="king.jpg" alt="King Avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
       <div style="flex:1" class="card">
         <h1 style="margin:0">King</h1>
@@ -53,7 +83,7 @@
       </div>
     </div>
 
-    <section style="margin-top:18px" class="card">
+    <section style="margin-top:18px" class="card bounce-fade" style="animation-delay:0.45s">
       <h3 style="margin:0 0 8px 0">What I Offer</h3>
       <div class="features">
         <div class="feat"><strong>Dark Themed Websites</strong><div class="small">Cinematic landing pages, animated hubs, onboarding flows.</div></div>
@@ -69,7 +99,7 @@
       </div>
     </section>
 
-    <section style="margin-top:18px" class="card">
+    <section style="margin-top:18px" class="card bounce-fade" style="animation-delay:0.65s">
       <h3 style="margin:0 0 8px 0">Contact / Hire</h3>
       <div class="small">DM to request an estimate, timeline & contract. I accept milestone payments and provide source code per agreement.</div>
       <div style="margin-top:12px;display:flex;gap:8px">
@@ -78,9 +108,19 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="bounce-fade" style="animation-delay:0.85s">
       <div class="small">© King — Creator & Designer. Contact via WhatsApp for commissions and custom builds.</div>
     </footer>
   </div>
+
+  <script>
+    // Add stagger delay automatically for each section
+    window.addEventListener("load", ()=>{
+      const sections = document.querySelectorAll(".bounce-fade");
+      sections.forEach((el,i)=>{
+        el.style.animationDelay = `${i * 0.25}s`;
+      });
+    });
+  </script>
 </body>
 </html>
